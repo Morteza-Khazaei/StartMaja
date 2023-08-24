@@ -30,7 +30,7 @@ setup(
     install_requires = requirements,
     entry_points ={
         'console_scripts': [
-            'start_maja = StartMaja.src.core:main'
+            'StartMaja = StartMaja.core:main'
         ]
     },
     classifiers=[
