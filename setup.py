@@ -28,10 +28,6 @@ setup(
         exclude=['test']
     ),  # Don't include test directory in binary distribution
     install_requires = requirements,
-    entry_points='''
-      [console_scripts]
-      StartMaja=StartMaja.CLI
-      ''',
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
