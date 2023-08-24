@@ -509,8 +509,8 @@ def main():
     assert sys.version_info >= (3, 5), "Start_maja needs python >= 3.5.\n Run 'python --version' for more info."
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("-t", "--tile", help="Tile number",
-                        type=str, required=True)
+    parser.add_argument("-t", "--tiles", help="Tile numbers",
+                        type=list, required=True)
     parser.add_argument("-s", "--site", help="Site name. If not specified,"
                                              "the tile number is used directly for finding the L1/L2 product directory",
                         type=str, required=False)
@@ -548,9 +548,10 @@ def main():
     logging_level = logging.DEBUG if args.verbose else logging.INFO
     logger = StartMaja.init_loggers(msg_level=logging_level)
 
-    s = StartMaja(args.folder, args.tile, args.site,
-                  args.start, args.end, nbackward=args.nbackward, logger=logger,
-                  overwrite=args.overwrite, cams=args.cams,
-                  skip_confirm=args.y, platform=args.platform,
-                  type_dem=args.type_dem, skip_errors=args.skip_errors)
-    s.run()
+    for tile in list(args.tiles):
+        s = StartMaja(args.folder, tile, args.site,
+                    args.start, args.end, nbackward=args.nbackward, logger=logger,
+                    overwrite=args.overwrite, cams=args.cams,
+                    skip_confirm=args.y, platform=args.platform,
+                    type_dem=args.type_dem, skip_errors=args.skip_errors)
+        s.run()
