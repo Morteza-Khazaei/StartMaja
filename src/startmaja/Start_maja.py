@@ -16,9 +16,9 @@ import re
 import logging
 from os import path as p
 from datetime import timedelta, datetime
-from StartMaja.Common import FileSystem
-from StartMaja.Chain import AuxFile, GippFile, Product
-from StartMaja.Chain.Workplan import Workplan, Nominal, Backward, Init
+from .Common import FileSystem
+from .Chain import AuxFile, GippFile, Product
+from .Chain.Workplan import Workplan, Nominal, Backward, Init
 
 
 class StartMaja(object):

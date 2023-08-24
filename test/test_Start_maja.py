@@ -17,12 +17,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import unittest
-from StartMaja.Start_maja import StartMaja
+
 import sys
 import os
 from datetime import datetime
-sys.path.append(StartMaja.current_dir)  # Replaces __init__.py
+sys.path.append('../StartMaja/src')
+import unittest
+from StartMaja import StartMaja
 
 
 def modify_folders_file(root, new_file, **kwargs):
