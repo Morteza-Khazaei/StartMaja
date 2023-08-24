@@ -504,7 +504,8 @@ class StartMaja(object):
         pass
 
 
-if __name__ == "__main__":
+
+def main():
     assert sys.version_info >= (3, 5), "Start_maja needs python >= 3.5.\n Run 'python --version' for more info."
     import argparse
     parser = argparse.ArgumentParser()
