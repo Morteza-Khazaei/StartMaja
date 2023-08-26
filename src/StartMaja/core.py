@@ -506,15 +506,10 @@ class StartMaja(object):
 
 
 def main():
-    s2_tiles = ['39STD', '39STC', '39STB', '38SQJ', '38SQH', 
-                '38SQG', '39SUC', '39SUB', '39SUA', '39SWA', 
-                '39SWV', '39SVB', '39SVA', '39SXA', '39SXV', 
-                '39SYB', '39SYA', '39SYV', '40SBG', '40SBF', 
-                '40SCH', '40SCG', '40SCF', '40SDH', '40SDG']
     assert sys.version_info >= (3, 5), "Start_maja needs python >= 3.5.\n Run 'python --version' for more info."
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("-t", "--tiles", nargs='+', help="Tile numbers", required=True, default=s2_tiles)
+    parser.add_argument("-t", "--tiles", nargs='+', help="Tile numbers", required=True)
     parser.add_argument("-s", "--site", help="Site name. If not specified,"
                                              "the tile number is used directly for finding the L1/L2 product directory",
                         type=str, required=False)
@@ -553,12 +548,9 @@ def main():
     logger = StartMaja.init_loggers(msg_level=logging_level)
 
     for tile in list(args.tiles):
-        try:
-            s = StartMaja(args.folder, tile, args.site,
-                        args.start, args.end, nbackward=args.nbackward, logger=logger,
-                        overwrite=args.overwrite, cams=args.cams,
-                        skip_confirm=args.y, platform=args.platform,
-                        type_dem=args.type_dem, skip_errors=args.skip_errors)
-            s.run()
-        except:
-            continue
+        s = StartMaja(args.folder, tile, args.site,
+                    args.start, args.end, nbackward=args.nbackward, logger=logger,
+                    overwrite=args.overwrite, cams=args.cams,
+                    skip_confirm=args.y, platform=args.platform,
+                    type_dem=args.type_dem, skip_errors=args.skip_errors)
+        s.run()
