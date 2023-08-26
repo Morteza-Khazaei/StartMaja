@@ -27,6 +27,8 @@ setup(
         where='src', 
         exclude=['test']
     ),  # Don't include test directory in binary distribution
+    # package_data={'StartMaja': ['data/schema.json']},
+    include_package_data=True,
     install_requires = requirements,
     entry_points ={
         'console_scripts': [
