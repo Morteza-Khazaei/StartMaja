@@ -91,7 +91,8 @@ class GippSet(object):
     """
     Stores a set of Gipp Files
     """
-    url = "http://osr-cesbio.ups-tlse.fr/gitlab_cesbio/kettigp/maja-gipp/-/archive/master/maja-gipp-master.zip"
+    # url = "http://osr-cesbio.ups-tlse.fr/gitlab_cesbio/kettigp/maja-gipp/-/archive/master/maja-gipp-master.zip"
+    url = "https://gitlab.cesbio.omp.eu/kettigp/maja-gipp/-/archive/master/maja-gipp-master.zip"
     zenodo_reg = r"https?:\/\/zenodo.org\/record\/\d+\/files\/\w+.zip\?download=1"
 
     platforms = ["sentinel2", "landsat8", "venus"]
