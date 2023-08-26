@@ -478,29 +478,29 @@ class StartMaja(object):
             -   Run MAJA
         """
         if not self.dtm:
-            logger.info("Attempting to download DTM...")
+            self.logger.info("Attempting to download DTM...")
             self.avail_input_l1[0].get_mnt(dem_dir=self.rep_mnt, type_dem=self.type_dem,
                                            raw_dem=self.rep_raw, raw_gsw=self.rep_gsw)
             self.dtm = self.get_dtm(type_dem=self.type_dem)
-            logger.info("DTM Creation succeeded.")
+            self.logger.info("DTM Creation succeeded.")
         if not self.gipp.check_completeness():
-            logger.info("Attempting to download Gipp for %s" % self.gipp.gipp_folder_name)
+            self.logger.info("Attempting to download Gipp for %s" % self.gipp.gipp_folder_name)
             self.gipp.download()
-        logger.info("GIPP Creation succeeded for %s" % self.gipp.gipp_folder_name)
+        self.logger.info("GIPP Creation succeeded for %s" % self.gipp.gipp_folder_name)
 
         workplans = self.create_workplans(self.max_product_difference)
-        logger.info("%s workplan(s) successfully created:" % len(workplans))
+        self.logger.info("%s workplan(s) successfully created:" % len(workplans))
         # Print without the logging-formatting:
         print(str("%19s | %10s | %8s | %70s | %15s" % ("DATE", "TILE", "MODE", "L1-PRODUCT", "ADDITIONAL INFO")))
         for wp in workplans:
             print(wp)
         if not self.skip_confirm:
             input("Press Enter to continue...\n")
-        logger.info("Beginning workplan execution.")
+        self.logger.info("Beginning workplan execution.")
         for i, wp in enumerate(workplans):
-            logger.info("Executing workplan #%s/%s" % (i+1, len(workplans)))
+            self.logger.info("Executing workplan #%s/%s" % (i+1, len(workplans)))
             wp.execute(self.maja, self.dtm, self.gipp, self.userconf)
-        logger.info("=============Start_Maja v%s finished=============" % self.version)
+        self.logger.info("=============Start_Maja v%s finished=============" % self.version)
         pass
 
 
