@@ -28,6 +28,7 @@ setup(
         exclude=['test']
     ),  # Don't include test directory in binary distribution
     package_data={'': ['*.xml']},
+    include_package_data=True,
     install_requires = requirements,
     entry_points ={
         'console_scripts': [
