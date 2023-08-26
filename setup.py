@@ -27,7 +27,7 @@ setup(
         where='src', 
         exclude=['test']
     ),  # Don't include test directory in binary distribution
-    package_data={'StartMaja': ['userconf/*.xml']},
+    package_data={'StartMaja': ['src/StartMaja/userconf/*.xml']},
     install_requires = requirements,
     entry_points ={
         'console_scripts': [
