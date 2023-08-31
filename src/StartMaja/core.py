@@ -548,9 +548,13 @@ def main():
     logger = StartMaja.init_loggers(msg_level=logging_level)
 
     for tile in list(args.tiles):
-        s = StartMaja(args.folder, tile, args.site,
-                    args.start, args.end, nbackward=args.nbackward, logger=logger,
-                    overwrite=args.overwrite, cams=args.cams,
-                    skip_confirm=args.y, platform=args.platform,
-                    type_dem=args.type_dem, skip_errors=args.skip_errors)
-        s.run()
+        try:
+            s = StartMaja(args.folder, tile, args.site,
+                        args.start, args.end, nbackward=args.nbackward, logger=logger,
+                        overwrite=args.overwrite, cams=args.cams,
+                        skip_confirm=args.y, platform=args.platform,
+                        type_dem=args.type_dem, skip_errors=args.skip_errors)
+            s.run()
+        except:
+            logger.info("Cannot find L1C products for %s. Will attempt to continue the process for the next tile." % tile)
+            continue
