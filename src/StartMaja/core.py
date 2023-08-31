@@ -393,7 +393,7 @@ class StartMaja(object):
                     pass
                 else:
                     # Proceed with INIT
-                    logger.info("Not enough L1 products available for a BACKWARD mode. Beginning with INIT...")
+                    self.logger.info("Not enough L1 products available for a BACKWARD mode. Beginning with INIT...")
                     workplans.append(Init(wdir=self.rep_work,
                                           outdir=self.path_input_l2,
                                           l1=used_prod_l1[0],
@@ -405,14 +405,14 @@ class StartMaja(object):
                     pass
                 pass
         else:
-            logger.debug("Skipping L1 product %s because it was already processed!" % used_prod_l1[0].base)
+            self.logger.debug("Skipping L1 product %s because it was already processed!" % used_prod_l1[0].base)
 
         # For the rest: Setup NOMINAL.
         # Except: The time series is 'stopped' - The gap between two products is too large.
         # In this case, proceed with a re-init.
         for i, prod in enumerate(used_prod_l1[1:]):
             if prod in has_l2 and not self.overwrite:
-                logger.debug("Skipping L1 product %s because it was already processed!" % prod.base)
+                self.logger.debug("Skipping L1 product %s because it was already processed!" % prod.base)
                 continue
             # Note: i, in this case is the previous product -> Not the current one, which is i+1
             date_gap = prod.date - used_prod_l1[i].date
@@ -434,7 +434,7 @@ class StartMaja(object):
                     pass
                 else:
                     # Proceed with INIT
-                    logger.info("Not enough L1 products available for a BACKWARD mode. Continuing with INIT...")
+                    self.logger.info("Not enough L1 products available for a BACKWARD mode. Continuing with INIT...")
                     workplans.append(Init(wdir=self.rep_work,
                                           outdir=self.path_input_l2,
                                           l1=prod,
