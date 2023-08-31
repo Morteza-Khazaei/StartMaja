@@ -556,5 +556,5 @@ def main():
                         type_dem=args.type_dem, skip_errors=args.skip_errors)
             s.run()
         except:
-            logger.info("Cannot find L1C products for %s. Will attempt to continue the process for the next tile." % tile)
+            logger.warning("Maja cannot find L1C products for %s. Will attempt to continue the process for the next tile." % tile)
             continue
